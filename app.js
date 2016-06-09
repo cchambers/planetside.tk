@@ -1,4 +1,5 @@
 var app = {
+  apiKey: '', // you get this from ~~SOE~~ daybreak?
   data: {},
   $title: $('.title'),
   $outputHeader: $('.kills h1'),
@@ -12,22 +13,23 @@ var app = {
   tkcount: 0,
   killCount: 0,
   suicideCount: 0,
+
   apis: {
     characterId: function (name) {
-      var url = "http://census.soe.com/s:khi/get/ps2:v2/character/?name.first_lower=" + name + "&c:resolve=online_status&callback=?";
+      var url = "http://census.soe.com/" + app.apiKey + "/get/ps2:v2/character/?name.first_lower=" + name + "&c:resolve=online_status&callback=?";
       return url;
     },
     killsByCharacters: function (chars) {
-      var url = "http://census.soe.com/s:khi/get/ps2:v2/characters_event/?character_id=" + chars + "&c:limit=1000&type=KILL&c:resolve=attacker,character&callback=?";
+      var url = "http://census.soe.com/" + app.apiKey + "/get/ps2:v2/characters_event/?character_id=" + chars + "&c:limit=1000&type=KILL&c:resolve=attacker,character&callback=?";
       return url;
     },
     deathsByCharacters: function (chars) {
-      var url = "http://census.soe.com/s:khi/get/ps2:v2/characters_event/?character_id=" + chars + "&c:limit=1000&type=DEATH&c:resolve=attacker,character&callback=?";
+      var url = "http://census.soe.com/" + app.apiKey + "/get/ps2:v2/characters_event/?character_id=" + chars + "&c:limit=1000&type=DEATH&c:resolve=attacker,character&callback=?";
       return url;
     },
     outfitCharacters: function (outfit) {
       outfit = outfit.split("[")[1].split("]")[0];
-      var url = "http://census.soe.com/s:khi/get/ps2:v2/outfit?alias_lower=" + outfit + "&c:resolve=member_character,member_faction&callback=?";
+      var url = "http://census.soe.com/" + app.apiKey + "/get/ps2:v2/outfit?alias_lower=" + outfit + "&c:resolve=member_character,member_faction&callback=?";
       return url;
     }
   },
