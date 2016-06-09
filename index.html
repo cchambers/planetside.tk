@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Planetside 2 Team Kill Tracker</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="http://basicss.com/css/basi.css">
+  <link rel="stylesheet" href="http://basicss.com/css/magi.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+</head>
+<style>
+
+  html{
+    font-size: 10px;
+  }
+  
+  body{
+    background-image: url(images/paper.png);
+    color: #505050;
+  }
+
+  h1{
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 30px;
+  }
+
+  h1 span{
+    font-weight: bold;
+    color: rgb(186,218,85); 
+    text-shadow: 0px -1px 1px rgba(0,0,0,.75),
+    0px 1px 1px rgba(0,0,0,.75),
+    -1px 0px 1px rgba(0,0,0,.75),
+    1px 0px 1px rgba(0,0,0,.75);
+    letter-spacing: 1px;
+    font-size: 30px;
+  }
+  
+  .title{
+    font-size: 2rem;
+  }
+
+  .terran,
+  .vanu,
+  .freedom{
+    text-shadow: none !important;
+  }
+
+  .terran{
+    color: #9B111E;
+  }
+  .vanu{
+    color: purple;
+  }
+  .freedom{
+    color: navy;
+  }
+
+  .highlight{
+    background: rgb(186,218,85);
+  }
+
+  .kills li,
+  .deaths li{
+    position: relative;
+    line-height: 3rem;
+    list-style: none;
+  }
+
+  .kills li:nth-child(odd),
+  .deaths li:nth-child(odd){
+    background: rgba(0,0,0,.05);
+  }
+
+  .kills li a,
+  .deaths li a{
+    display: block;
+    padding: 0 10px;
+    transition: background 250ms ease-in;
+  }
+
+  .kills li a:hover,
+  .deaths li a:hover{
+    background: rgb(186,218,85);
+    opacity: 1;
+  }
+
+  .timestamp{
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 12px;
+  }
+
+  .title{
+    text-align: center;
+    font-style: italic;
+  }
+
+  .progress{
+    width: 100%;
+  }
+
+  .progress .inner{
+    width:0%;
+    height: 5px;
+    margin-top: 5px;
+    background: rgb(186,218,85);
+    transition: width 150ms ease;
+  }
+
+  .masthead{
+    background-image: url(images/masthead.png);
+  }
+
+  .masthead h1{
+    font-weight: bold;
+  }
+
+  .masthead h1 span{
+    color: rgb(186,218,85);
+  }
+
+  .masthead h4{
+    font-weight: normal;
+    color:#999;
+    padding: 5px 0;
+    font-size: 14px;
+  }
+
+  .masthead a{
+    color: #006899;
+  }
+
+  .loading{
+    background-image: url(http://planetside.tk/images/ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: calc( 50% - 150px );
+    top: 30%;
+  }
+
+  .input{
+    background: #222;
+  }
+
+  .input input{
+    border: 1px solid #222;
+  }
+
+  #character-name{
+    display: block;
+    width: 100%;
+    line-height:70px;
+    font-size: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 5px;
+    background: #f2f2f2;
+    border: 1px solid #505050;
+  }
+
+  label span{
+    font-weight: bold;
+  }
+</style>
+<body class="normal">
+
+	<div class="row masthead pad-lips">
+		<div class="contain">
+			<h1 class="white">
+				Planetside 2 <span>Team Kill</span> Tracker
+      </h1>
+      <h4>
+        Send bugs reports/comments to me on twitter: <a target="_new" href="http://twitter.com/chriswritescode">@chriswritescode</a>
+      </h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="contain">
+      <div class="row">
+        <div class="col-1-2">
+          <label for="character-name" class="px30">
+            <span>Character</span> name or<br class="desktop" /> outfit <span>[TAG]</span> with brackets: 
+          </label>
+        </div>
+        <div class="col-1-2">
+          <input class="px24 lh30" type="text" id="character-name" placeholder="Name or [TAG]">
+        </div>
+      </div>
+
+      <div class="row">
+        <h3 class="note pad-lips-light" style="display:none"></h3>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row output">
+    <div class="contain">
+      <div class="row">
+        <div class="col-1-2 kills">
+          <h1 class="pad-lips-light"></h1>
+          <h4 class="title light pad-bottom-light" style="display:none;"></h4>
+          <ul></ul>
+        </div>
+
+        <div class="col-1-2 deaths">
+          <h1 class="pad-lips-light"></h1>
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row pad-box"></div>
+
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="app.js?23"></script>
+</body>
+</html>
